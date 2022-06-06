@@ -24,4 +24,6 @@ fi
 #  find "${ENTRYPOINTD}" -type f -executable -print -exec {} \;
 #fi
 
-exec /usr/bin/code-server "$@"
+#exec /usr/bin/code-server "$@"
+exec "$@"
+
