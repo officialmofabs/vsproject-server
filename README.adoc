@@ -8,3 +8,13 @@ However
 
 * Uses Red Hat ubi images as its base
 * Supports ubi tooling
+
+
+=== TODO
+
+* Multi-arch building
+* Hostname - Nice to Have
+* Utility tooling - make "VM like"
+* Ansible tooling - or child image?
+* OpenShift/K8S tooling - or child image?
+* SBOM generation

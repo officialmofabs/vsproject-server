@@ -2,9 +2,9 @@ IMAGE_NAME 						= rhel-vsc-code-server
 REGISTRY 							= quay.io/tonykay
 CONTAINER_RUNTIME 		= docker
 
-CONTAINER_HOSTNAME 		= terminal
+#CONTAINER_HOSTNAME 		= terminal
 #RHEL_VERSION 					= 9
-TERMINAL_PORT 				= 8080
+#TERMINAL_PORT 				= 8080
 SHELL_COMMAND 				= sudo su - devops
 
 # Used instead of docker run.... bash 
@@ -18,16 +18,26 @@ help: ## Show this help - technically unnecessary as `make` alone will do
 # Thanks to victoria.dev for the above syntax
 # https://victoria.dev/blog/how-to-create-a-self-documenting-makefile/
 
-build : ## Do a docker based build
-build : ##    EXTRA_ARGS='--squash' for example
+build-arm64 : ## Do a docker based build for ARM
+build-arm64 : ##    EXTRA_ARGS='--squash' for example
 	DOCKER_BUILDKIT=1 \
 		docker build \
-		-f Dockerfile \
+		-f Dockerfile-linux-arm64-v8 \
 		-t $(IMAGE_NAME) \
+		--platform linux/arm64/v8 \
 		$(EXTRA_ARGS) .
 
 #		--build-arg=RHEL_VERSION=$(RHEL_VERSION) \
 # TODO add multi arch build for ARM and x64
+
+build-x64 : ## Do a docker based build for x64
+build-x64 : ##    EXTRA_ARGS='--squash' for example
+	DOCKER_BUILDKIT=1 \
+		docker build \
+		-f Dockerfile-linux-amd64 \
+		-t $(IMAGE_NAME) \
+		--platform linux/amd64 \
+		$(EXTRA_ARGS) .
 
 tag : ## Tag the image
 	docker tag $(IMAGE_NAME) $(REGISTRY)/$(IMAGE_NAME):latest
