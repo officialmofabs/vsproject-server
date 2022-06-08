@@ -1,5 +1,5 @@
 IMAGE_NAME 						= rhel-vsc-code-server
-REGISTRY 							= quay.io/tonykay
+REGISTRY 							= docker.io/tonykay
 CONTAINER_RUNTIME 		= docker
 
 #CONTAINER_HOSTNAME 		= terminal
