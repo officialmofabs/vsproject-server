@@ -3,6 +3,30 @@
 A simple Visual Studio Code Server image that allows the use of VSC on your lcao machine via a browser
 
 
+=== Usage
+
+*Quickest* 
+
+. `docker compose up -d`  
+. and `docker compose down` to stop
+
+Then browse to http://localhost:8080 and password `r3dh4t1!`
+(Password is set in `config/config/code-server/config.yaml`)
+
+==== _very_ Long Hand
+
+[source,sh]
+----
+docker run -d --rm 
+  --name vscode-server \
+  -p 8080:8080 \
+  --hostname devops \
+  -v "$(pwd)/config:/home/devops/.config" \
+  -e "DOCKER_USER=$USER" \
+  quay.io/tonykay/rhel-vsc-code-server:latest
+----
+
+
 Draws very heavily on 
 However
 

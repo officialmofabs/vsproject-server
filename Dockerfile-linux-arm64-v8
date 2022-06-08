@@ -12,11 +12,10 @@ RUN dnf install -y https://github.com/coder/code-server/releases/download/v4.4.0
     sudo \ 
     && useradd devops \
     && echo "devops ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && pip3 --no-cache-dir install ansible \
     && chmod +x /usr/bin/entrypoint.sh \
     && dnf clean all \
     && rm -rf /var/cache/dnf /root/.cache
-
-RUN pip3 --no-cache-dir install ansible 
 
 #    && pip3 cache purge \
 # TODO Install Ansible tooling (ansible, no need for navigator?)
