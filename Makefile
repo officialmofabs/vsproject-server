@@ -1,8 +1,8 @@
-IMAGE_NAME 						= rhel-vsc-code-server
+IMAGE_NAME 						= rhel9-vsc-code-server
 REGISTRY 							= docker.io/tonykay
 CONTAINER_RUNTIME 		= docker
 
-#CONTAINER_HOSTNAME 		= terminal
+CONTAINER_HOSTNAME 		= code
 #RHEL_VERSION 					= 9
 #TERMINAL_PORT 				= 8080
 SHELL_COMMAND 				= sudo su - devops
@@ -18,22 +18,21 @@ help: ## Show this help - technically unnecessary as `make` alone will do
 # Thanks to victoria.dev for the above syntax
 # https://victoria.dev/blog/how-to-create-a-self-documenting-makefile/
 
-build : ## Do a docker based build for amd64
+build : ## Do a docker based buildx multiarch build for amd64 arm64
 build : ##    EXTRA_ARGS='--squash' for example
-	DOCKER_BUILDKIT=1 \
 	docker buildx build \
-		--tag $(REGISTRY)/$(IMAGE_NAME):latest \
-		--platform linux/amd64 \
+		--platform linux/arm64/v8,linux/amd64 \
+		--tag $(REGISTRY)/$(IMAGE_NAME):$${VERSION:-latest} \
 		--push \
 		$(EXTRA_ARGS) .
 
-build-arm64 : ## Do a docker based build for ARM
-build-arm64 : ##    EXTRA_ARGS='--squash' for example
-	DOCKER_BUILDKIT=1 \
-		docker build \
-		-f Dockerfile-linux-arm64-v8 \
-		-t $(IMAGE_NAME) \
+build-arm64 : ## Do a docker based build for ARM and load to local docker registry
+build-arm64 : ## EXTRA_ARGS='--myarg' for example
+		docker buildx build \
 		--platform linux/arm64/v8 \
+		--tag $(REGISTRY)/$(IMAGE_NAME):arm64-$${VERSION:-latest} \
+		--load \
+		--file Dockerfile \
 		$(EXTRA_ARGS) .
 
 #		--build-arg=RHEL_VERSION=$(RHEL_VERSION) \
@@ -41,12 +40,13 @@ build-arm64 : ##    EXTRA_ARGS='--squash' for example
 
 build-x64 : ## Do a docker based build for x64
 build-x64 : ##    EXTRA_ARGS='--squash' for example
-	DOCKER_BUILDKIT=1 \
-		docker build \
-		-f Dockerfile-linux-amd64 \
-		-t $(IMAGE_NAME) \
+	docker buildx build \
 		--platform linux/amd64 \
+		--tag $(REGISTRY)/$(IMAGE_NAME):amd64-$${VERSION:-latest} \
+		--load \
+		--file Dockerfile \
 		$(EXTRA_ARGS) .
+
 
 tag : ## Tag the image
 	docker tag $(IMAGE_NAME) $(REGISTRY)/$(IMAGE_NAME):latest
