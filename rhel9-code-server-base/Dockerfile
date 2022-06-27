@@ -1,5 +1,6 @@
-# syntax = docker/dockerfile:1.0-experimental
 # Big thanks and credit to the coder crew and https://github.com/coder/code-server
+#
+# NB coder use ubuntu hence the need for a RHEL/CentOS/Fedora based OCI Image
 
 FROM registry.access.redhat.com/ubi9/ubi:${RHEL_VERSION:-latest}
 
@@ -11,7 +12,8 @@ LABEL maintainer="Tok - Tony Kay tony.g.kay@gmail.com"
 
 COPY entrypoint.sh /usr/bin/entrypoint.sh
 
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
+RUN dnf update -y \
+    if [ "$TARGETPLATFORM" = "linux/amd64" ]; then \
       ARCHITECTURE=amd64; \
     elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then \
       ARCHITECTURE=arm64; \

@@ -1,11 +1,5 @@
 === Overview
 
-
-A collection of Dockerfiles, organized by directory, building 
-
-
-
-
 A simple Visual Studio Code Server image that allows the use of VSC on your lcao machine via a browser
 
 
@@ -55,11 +49,3 @@ docker run -d --rm
 * OpenShift/K8S tooling - or child image?
 * SBOM generation
 ** Basics - cyclonedx via (shh) `syft` & `grype`
-
-
-
-README.adoc
-rhel9-code-server-all-in-one
-rhel9-code-server-ansible
-rhel9-code-server-base
-rhel9-code-server-k8s-openshift
