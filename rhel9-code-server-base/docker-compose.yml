@@ -3,7 +3,7 @@ version: "2.1"
 
 services:
   code-server:
-    image: dockerhub.io/tonykay/rhel9-code-server:v0.0.3
+    image: dockerhub.io/tonykay/rhel9-code-server-base:v0.0.1
     container_name: code-server
     hostname: code-server
     volumes:
@@ -12,5 +12,5 @@ services:
       - 8080:8080
     environment:
       - "DOCKER_USER=$USER"
-      - "PASSWORD=awful-password"
+      - "PASSWORD=changeme"
     restart: unless-stopped
