@@ -1,0 +1,16 @@
+; /etc/systemd/network/vbridge.network
+[Match]
+Name=vbridge
+
+[Network]
+IPForward=yes
+LinkLocalAddressing=no
+Address=192.168.155.223/32
+Gateway=192.168.155.1
+DNS=192.168.155.1
+
+[Route]
+Destination=192.168.155.0/24
+Gateway=192.168.155.1
+Scope=global
+GatewayOnlink=yes

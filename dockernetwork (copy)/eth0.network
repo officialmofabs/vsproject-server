@@ -1,0 +1,9 @@
+; /etc/systemd/network/eth0.network
+
+[Match]
+Name=eth0
+
+[Network]
+MACVLAN=vbridge
+DHCP=yes
+MulticastDNS=yes

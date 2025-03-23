@@ -1,0 +1,7 @@
+; /etc/systemd/network/vbridge.netdev
+[NetDev]
+Name=vbridge
+Kind=macvlan
+
+[MACVLAN]
+Mode=bridge

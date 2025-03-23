@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+    whoami:
+        image: containous/whoami:latest
+        restart: unless-stopped
+        container_name: whoami
+        hostname: whoami
+        networks:
+            macvlan:
+                ipv4_address: 192.168.155.210
+
+networks:
+    macvlan:
+        external: true
