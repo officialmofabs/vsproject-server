@@ -1,0 +1,76 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/SDK-Analyzers/Components/src/Microsoft.AspNetCore.Components.SdkAnalyzers.csproj": {}
+  },
+  "projects": {
+    "/home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/SDK-Analyzers/Components/src/Microsoft.AspNetCore.Components.SdkAnalyzers.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/SDK-Analyzers/Components/src/Microsoft.AspNetCore.Components.SdkAnalyzers.csproj",
+        "projectName": "Microsoft.AspNetCore.Components.SdkAnalyzers",
+        "projectPath": "/home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/SDK-Analyzers/Components/src/Microsoft.AspNetCore.Components.SdkAnalyzers.csproj",
+        "packagesPath": "/home/developer/.nuget/packages/",
+        "outputPath": "/home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/SDK-Analyzers/Components/src/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/developer/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "9.0.100"
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
+          "dependencies": {
+            "Microsoft.CodeAnalysis.CSharp.Workspaces": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "(, )",
+              "autoReferenced": true
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.100-rc.2.24474.11/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = Microsoft.AspNetCore.Components.Analyzers
+build_property.ProjectDir = /home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/SDK-Analyzers/Components/src/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

@@ -1,1 +1,10 @@
-.vscode
+.qodo
+.env
+.envrc
+.gitignore
+.gitmodules
+.gitmessage
+.git-blame*
+.gitattributes
+.gitmodules
+.gitconfig

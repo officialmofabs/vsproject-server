@@ -1,0 +1,8 @@
+linux-musl-x64
+linux-musl
+linux-x64
+linux
+unix-x64
+unix
+any
+base

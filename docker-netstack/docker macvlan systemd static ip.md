@@ -16,5 +16,5 @@ docker network create \
                     --subnet=192.168.155.0/24 \
                     --gateway=192.168.155.0 \
                     --ip-range 192.168.155.192/27 \
-                    macvlan # the name
+                    macvlan officialmofabs
 ```

@@ -1,11 +1,9 @@
-version: '3.5'
-
 services:
-    whoami:
-        image: containous/whoami:latest
+    :
+        image: containous/officialmofabs:latest
         restart: unless-stopped
-        container_name: whoami
-        hostname: whoami
+        container_name: officialmofabs
+        hostname: officialmofabs
         networks:
             macvlan:
                 ipv4_address: 192.168.155.210

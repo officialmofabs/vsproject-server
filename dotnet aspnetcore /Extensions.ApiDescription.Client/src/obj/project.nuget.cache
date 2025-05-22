@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VhX0mwKXDv8=",
+  "success": true,
+  "projectFilePath": "/home/developer/Documents/dotnet aspnetcore main src-Tools (copy)/Extensions.ApiDescription.Client/src/Microsoft.Extensions.ApiDescription.Client.csproj",
+  "expectedPackageFiles": [
+    "/home/developer/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/home/developer/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

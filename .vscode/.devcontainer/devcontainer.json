@@ -1,0 +1,65 @@
+{
+  "name": "rolling desktop-full",
+  "dockerFile": "Dockerfile",
+  "runArgs": [
+    "--privileged",
+    "--network=host"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/${localWorkspaceFolderBasename}",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/vscode/.bash_history,type=bind"
+],
+"features": {
+	"ghcr.io/wxw-matt/devcontainer-features/script_runner:0": {},
+	"ghcr.io/itsmechlark/features/act:1": {},
+	"ghcr.io/dotnet/aspire-devcontainer-feature/dotnetaspire:1": {},
+	"ghcr.io/grafana/devcontainer-features/k6:1": {}
+},
+"customizations": {
+  "vscode": {
+    "extensions": [
+      "dreamcatcher45.podmanager",
+      "hangxingliu.vscode-systemd-support",
+      "redhat.vscode-openshift-connector",
+      "eliostruyf.vscode-front-matter-beta",
+      "VimLeSai.front-end-ext-pack",
+      "bobmagicii.dashyeah",
+      "fabiospampinato.vscode-open-in-github",
+      "fabiospampinato.vscode-open-in-npm",
+      "ms-iot.msiot-vscode-openenclave",
+      "VCaveman.open-in-web",
+      "svetlozarangelov.vscode-open-project",
+      "logerfo.open-all-files",
+      "alexeyvax.vscode-open-native-terminal",
+      "ms-vscode-remote.vscode-remote-extensionpack",
+      "ms-ssdevteam.scope-vscode-ext",
+      "ms-codespaces-tools.ado-codespaces-auth",
+      "ms-azuretools.vscode-apimanagement",
+      "vsciot-vscode.azure-iot-toolkit",
+      "ms-kubernetes-tools.vscode-aks-tools",
+      "msazurermtools.azurerm-vscode-tools",
+      "ms-azuretools.vscode-azureterraform",
+      "ms-vscode.vscode-node-azure-pack",
+      "ms-vscode-remote.remote-ssh",
+      "m365pnp.viva-connections-toolkit",
+      "SharepointEmbedded.ms-sharepoint-embedded-vscode-extension",
+      "adamwojcikit.pnp-powershell-extension",
+      "spiritous.spflash",
+      "dreamcode.spfxresources",
+      "TeamsDevApp.ms-teams-vscode-extension",
+      "stefanstranger.vscode-microsoftteams",
+      "Edgaras7.ms-planner",
+      "FrancescoAnzalone.vsc-todo",
+      "ms-dotnettools.vscodeintellicode-csharp",
+      "ms-dotnettools.csharp",
+      "ms-dotnettools.csdevkit",
+      "ms-dotnettools.blazorwasm-companion",
+      "ms-vscode-remote.remote-ssh-edit",
+      "ashtoroth.remote-compilation",
+      "Nibs.remote-cloud-shell",
+      "quantum.qsharp-lang-vscode"
+    ]
+  }
+}
+}

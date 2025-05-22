@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": "../../home/ubuntu"
+		},
+		{
+			"path": "../../vscode"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+		"frontMatter.content.pageFolders": [
+			{
+				"path": "[[workspace]]"
+			}
+		]
+	}
+}

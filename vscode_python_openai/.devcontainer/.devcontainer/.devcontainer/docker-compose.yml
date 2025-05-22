@@ -1,0 +1,66 @@
+services:
+
+  # development container
+  development:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - FLYWAY_URL=jdbc:mysql://${DATABASE_HOST}/${DATABASE_DB}
+      - FLYWAY_USER=${DATABASE_USER}
+      - FLYWAY_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - ..:/workspace
+    stdin_open: true
+
+  # database
+  database:
+    hostname: database
+    image: mariadb:latest
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DATABASE_PASSWORD}
+      - MARIADB_DATABASE=${DATABASE_DB}
+      - MARIADB_USER=${DATABASE_USER}
+      - MARIADB_PASSWORD=${DATABASE_PASSWORD}
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+  # flyway
+  flyway:
+    hostname: flyway
+    image: flyway/flyway:latest
+    environment:
+      - FLYWAY_URL=jdbc:mariadb://${DATABASE_HOST}/${DATABASE_DB}
+      - FLYWAY_USER=${DATABASE_USER}
+      - FLYWAY_PASSWORD=${DATABASE_PASSWORD}
+    volumes:
+      - ../sql:/flyway/sql
+    command: ["-locations=filesystem:/flyway/sql", "-connectRetries=60", "migrate"]
+    depends_on:
+      database:
+        condition: service_healthy
+
+
+  # web server
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile-webserver
+    hostname: webserver
+    environment:
+      - DATABASE_HOST=${DATABASE_HOST}
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_DB=${DATABASE_DB}
+    ports:
+      - 9080:80
+    volumes:
+      - ./apache-virtualhost.conf:/etc/apache2/sites-enabled/00-default.conf
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ../src:/var/www/html
+    depends_on:
+      database:
+        condition: service_healthy

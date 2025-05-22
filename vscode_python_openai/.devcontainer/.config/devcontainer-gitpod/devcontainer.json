@@ -1,0 +1,20 @@
+{
+  "name": "Devbox Remote Container",
+  "build": {
+    "dockerfile": "./Dockerfile",
+    "context": ".."
+  },
+  "postStartCommand": "direnv allow; sudo chown --recursive ${id -u}:33333 /nix/var/nix",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/code/.devbox/nix/profile/default/bin/python3"
+      },
+      "extensions": [
+        "jetpack-io.devbox",
+        "ms-python.python"
+      ]
+    }
+  },
+  "remoteUser": "gitpod"
+}

@@ -1,0 +1,9 @@
+image:
+  file: .gitpod.Dockerfile
+tasks:
+  - init: |
+      direnv allow
+vscode:
+  extensions:
+    - jetpack-io.devbox
+    - ms-python.python
